@@ -7,6 +7,8 @@ const app = express()
 const port = 3000
 const NODE_ENV = 'development'
 
+const route = require('./routes')
+
 app.use(express.static('./src/public/img'))
 
 app.use(morgan('combined'))
@@ -18,6 +20,7 @@ app.set('view engine', 'hbs');
 // app.set('views', path.join(__dirname, 'resources/views'))
 app.set('views', './src/resources/views')
 
+route(app)
 
 app.get('/', (req, res) => {
      res.render('home')
